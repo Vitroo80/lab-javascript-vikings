@@ -61,10 +61,28 @@ class War {
     }
 
     vikingAttack(){
+        let vikingr = Math.floor(Math.random()*this.vikingArmy.length)
+        let chosenV = this.vikingArmy[vikingr]
+        let saxonr = Math.floor(Math.random()*this.saxonArmy.length)
+        let chosenS = this.saxonArmy[saxonr]
+        let saxonDanoTomado = chosenS.receiveDamage(chosenV.attack())
+        if (chosenS.health<=0){
+            this.saxonArmy.splice(saxonr,1)
+        }
+        return saxonDanoTomado
 
     }
 
     saxonAttack(){
+        let vikingr = Math.floor(Math.random()*this.vikingArmy.length)
+        let chosenV = this.vikingArmy[vikingr]
+        let saxonr = Math.floor(Math.random()*this.saxonArmy.length)
+        let chosenS = this.saxonArmy[saxonr]
+        let vikingDanoTomado = chosenV.receiveDamage(chosenS.attack())
+        if (chosenV.health<=0){
+            this.vikingArmy.splice(vikingr,1)
+        }
+        return vikingDanoTomado
 
     }
     showStatus(){
